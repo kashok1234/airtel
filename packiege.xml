@@ -1,0 +1,30 @@
+<project name="antclass" basedir="." default ="main">
+<target name="clean" discription="clening dir">
+<delete dir="f:/build"/>
+</target>
+
+<target name ="create" discription="createdirctries">
+<mkdir dir="D:/build"/>
+<mkdir dir="D:/build/src"/>
+<mkdir dir="D:/build/src/java"/>
+<mkdir dir="D:/build/src/classes"/>
+<mkdir dir="D:/build/lib"/>
+<mkdir dir="D:/build/logs"/>
+<mkdir dir="D:/build/bin"/>
+</target>
+
+<target name="copy" discription="copy java files">
+<copy file="f:/java-files/Bye.java" todir="D:/build/src/java"/>
+<copy file="f:/java-files/HelloWorld.java" todir="D:/build/src/java"/>
+</target>
+<target name="compile" discription="compile the javafile">
+<javac srcdir="D:/build/src/java" destdir="D:/build/src/classes" includeantruntime="false"/>
+</target>
+<target name="package" description="packaging">
+<zip destfile="D:/build/lib/output.zip" basedir="D:/build"/>
+<jar destfile="D:/build/lib/output.jar" basedir="D:/build"/>
+</target>
+<target name="main" description="this target prints messages" depends="two, one, wipeout, init, copy, compile, package">
+<echo message="Hi. This is Ant class target MAIN"/>
+</target>
+</project>

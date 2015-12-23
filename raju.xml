@@ -1,0 +1,26 @@
+<project name= "buildprocess" basedir ="." default="main">
+<property name="sap_dir" value="F:/apple"/>
+<property name="del_dir_one" value="${sap_dir}\one"/>
+<property name="del_dir_two" value="${sap_dir}\two"/>
+<property name="files_dir" value="F:\wrk\akhil\trunk"/>
+
+
+
+<target name="clean" description="wiping local workspace">
+<delete dir="${del_dir_one}"/>
+<delete dir ="${del_dir_two}"/> 
+</target>
+<target name ="create" description="create dir ">
+<mkdir dir="${sap_dir}\three"/>
+<mkdir dir="${sap_dir}\four"/>
+</target>
+<target name="copy" description="copy the dir">
+<copy file="${files_dir}\one.txt" todir="${del_dir_two}"/>
+<copy file="${files_dir}\two.txt" todir="${del_dir_two}"/>
+<copy file="${files_dir}\three.txt" todir="${del_dir_two}"/>
+</target>
+
+<target name="main" description="calling all targets" depends="clean, create, copy">
+<echo message="calling all targets"/>
+</target>
+</project>

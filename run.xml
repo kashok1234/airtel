@@ -1,0 +1,31 @@
+<project name="nova" basedir="." default ="package">
+
+<target name="clean" description="clening dir">
+<delete dir="f:/build"/>
+</target>
+
+<target name ="create" description="createdirctries">
+<mkdir dir="f:/build"/>
+<mkdir dir="f:/build/src"/>
+<mkdir dir="f:/build/src/java"/>
+<mkdir dir="f:/build/src/classes"/>
+<mkdir dir="f:/build/lib"/>
+<mkdir dir="f:/build/logs"/>
+<mkdir dir="f:/build/bin"/>
+</target>
+
+<target name="copy" description="copy java files">
+<copy file="f:/java-files/Bye.java" todir="f:/build/src/java"/>
+<copy file="f:/java-files/HelloWorld.java" todir="f:/build/src/java"/>
+</target>
+<target name="compile" description="compile the javafile">
+<javac srcdir="f:/build/src/java" destdir="f:/build/src/classes" includeantruntime="false"/>
+</target>
+<target name="package" description="packaging">
+<war destfile="f:/build/lib/output.war" basedir="f:/build"/>
+<ear destfile="f:/build/lib/output.ear" basedir="f:/build"/>
+</target>
+<target name="done" description="this target prints messages" depends="clean,create, copy, compile, package">
+<echo message="Hi. This is Ant class target MAIN"/>
+</target>
+</project>

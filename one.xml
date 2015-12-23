@@ -1,0 +1,11 @@
+<project name="rajju" basedir="." default="raj">
+
+<target name="hello">
+<echo message="this is for one file to second file"/>
+</target>
+
+<target name="raj" depends="hello">
+<echo message="this is for raj"/>
+</target>
+
+</project>
